@@ -43,6 +43,7 @@ public class StartActivity extends Activity {
         button_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i(TAG, "User clicked Start Chat");
                 Intent intent = new Intent(StartActivity.this, ChatWindow.class);
                 startActivity(intent);
             }
