@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,34 +22,6 @@ public class ChatWindow extends Activity {
     private ListView list_chat;
     private ArrayList<String> messages;
 
-    private class ChatAdapter extends ArrayAdapter<String>{
-
-        public ChatAdapter(Context context) {
-            super(context, 0);
-        }
-
-        public int getCount(){
-            return list_chat.getCount();
-        }
-
-        public String getItem(int position){
-            return list_chat.getItemAtPosition(position).toString();
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent){
-            LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
-            View result = null ;
-            if(position%2 == 0)
-                result = inflater.inflate(R.layout.chat_row_incoming, null);
-            else
-                result = inflater.inflate(R.layout.chat_row_outgoing, null);
-            TextView message = result.findViewById(R.id.message_text);
-            message.setText(   getItem(position)  );
-
-
-            return  result;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +34,44 @@ public class ChatWindow extends Activity {
         list_chat = findViewById(R.id.list_chat);
         messages = new ArrayList<>();
 
-        final ChatAdapter messageAdapter =new ChatAdapter( this );
-        list_chat.setAdapter (messageAdapter);
+        class ChatAdapter extends ArrayAdapter<String> {
+
+            public ChatAdapter(Context context) {
+                super(context, 0);
+            }
+
+            @Override
+            public int getCount() {
+
+                int count = messages.size();
+                return count;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
+                View result;
+                if (position % 2 == 0)
+                    result = inflater.inflate(R.layout.chat_row_outgoing, null);
+                else
+                    result = inflater.inflate(R.layout.chat_row_incoming, null);
+                TextView message = result.findViewById(R.id.message_text);
+                message.setText(messages.get(position));
 
 
+                return result;
+            }
+        }
+
+
+        ChatAdapter messageAdapter = new ChatAdapter(this);
+        list_chat.setAdapter(messageAdapter);
 
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messageAdapter.notifyDataSetChanged();
+                messages.add(edit_message.getText().toString());
                 edit_message.setText("");
             }
         });
