@@ -15,7 +15,7 @@ public class StartActivity extends Activity {
 
     private static final String TAG = StartActivity.class.getSimpleName();
     private TextView welcome;
-    private Button button;
+    private Button button, button_chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class StartActivity extends Activity {
 
         welcome = findViewById(R.id.welcome);
         button = findViewById(R.id.button);
+        button_chat = findViewById(R.id.button_chat);
         SharedPreferences sharedPref = getSharedPreferences("User info", Context.MODE_PRIVATE);
 
         String email = sharedPref.getString("email", "");
@@ -36,6 +37,14 @@ public class StartActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(StartActivity.this, ListItemsActivity.class);
                 startActivityForResult(intent, 10);
+            }
+        });
+
+        button_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartActivity.this, ChatWindow.class);
+                startActivity(intent);
             }
         });
     }
