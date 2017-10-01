@@ -48,16 +48,21 @@ public class ChatWindow extends Activity {
             }
 
             @Override
+            public	String getItem(int position) {
+                return messages.get(position);
+            }
+
+            @Override
             public View getView(int position, View convertView, ViewGroup parent) {
 
                 LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
                 View result;
                 if (position % 2 == 0)
-                    result = inflater.inflate(R.layout.chat_row_outgoing, null);
-                else
                     result = inflater.inflate(R.layout.chat_row_incoming, null);
+                else
+                    result = inflater.inflate(R.layout.chat_row_outgoing, null);
                 TextView message = result.findViewById(R.id.message_text);
-                message.setText(messages.get(position));
+                message.setText( getItem(position) );
 
 
                 return result;
@@ -65,13 +70,14 @@ public class ChatWindow extends Activity {
         }
 
 
-        ChatAdapter messageAdapter = new ChatAdapter(this);
+        final ChatAdapter messageAdapter = new ChatAdapter(this);
         list_chat.setAdapter(messageAdapter);
 
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 messages.add(edit_message.getText().toString());
+                messageAdapter.notifyDataSetChanged();
                 edit_message.setText("");
             }
         });
