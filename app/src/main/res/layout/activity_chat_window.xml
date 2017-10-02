@@ -30,5 +30,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         style="@style/small_button"
-        android:text="Send" />
+        android:text="@string/button_send" />
 </RelativeLayout>
