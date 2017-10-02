@@ -13,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ChatWindow extends Activity {
 
@@ -21,6 +24,7 @@ public class ChatWindow extends Activity {
     private EditText edit_message;
     private ListView list_chat;
     private ArrayList<String> messages;
+    private TextView text_date;
 
 
     @Override
@@ -35,6 +39,8 @@ public class ChatWindow extends Activity {
         messages = new ArrayList<>();
 
         class ChatAdapter extends ArrayAdapter<String> {
+
+            private Date currentDate;
 
             public ChatAdapter(Context context) {
                 super(context, 0);
@@ -62,7 +68,11 @@ public class ChatWindow extends Activity {
                 else
                     result = inflater.inflate(R.layout.chat_row_outgoing, null);
                 TextView message = result.findViewById(R.id.message_text);
+                text_date = result.findViewById(R.id.text_date);
                 message.setText( getItem(position) );
+                SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
+                String currentDateandTime = sdf.format(Calendar.getInstance().getTime());
+                text_date.setText(currentDateandTime);
 
 
                 return result;
@@ -76,9 +86,11 @@ public class ChatWindow extends Activity {
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messages.add(edit_message.getText().toString());
-                messageAdapter.notifyDataSetChanged();
-                edit_message.setText("");
+                if(!edit_message.getText().toString().equals("")) {
+                    messages.add(edit_message.getText().toString());
+                    messageAdapter.notifyDataSetChanged();
+                    edit_message.setText("");
+                }
             }
         });
     }
