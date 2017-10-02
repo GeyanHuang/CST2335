@@ -22,8 +22,6 @@ public class ChatWindow extends Activity {
     private EditText edit_message;
     private ListView list_chat;
     private ArrayList<String> messages;
-    private TextView text_date;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +35,14 @@ public class ChatWindow extends Activity {
         messages = new ArrayList<>();
 
         class ChatAdapter extends ArrayAdapter<String> {
+            private String lastDate = null;
 
-            public ChatAdapter(Context context) {
-                super(context, 0);
+            public ChatAdapter(Context context, ArrayList<String> messages) {
+                super(context, 0, messages);
+            }
+
+            public String getItem(int position){
+                return messages.get(position);
             }
 
             @Override
@@ -50,38 +53,32 @@ public class ChatWindow extends Activity {
             }
 
             @Override
-            public	String getItem(int position) {
-                return messages.get(position);
-            }
-
-            @Override
             public View getView(int position, View convertView, ViewGroup parent) {
 
                 LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
+
                 View result;
                 if (position % 2 == 0)
                     result = inflater.inflate(R.layout.chat_row_incoming, null);
                 else
                     result = inflater.inflate(R.layout.chat_row_outgoing, null);
+
                 TextView message = result.findViewById(R.id.message_text);
-                text_date = result.findViewById(R.id.text_date);
-                message.setText( getItem(position) );
-                SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
-                String currentDateandTime = sdf.format(Calendar.getInstance().getTime());
-                text_date.setText(currentDateandTime);
+
+                message.setText(getItem(position));
 
                 return result;
             }
         }
 
 
-        final ChatAdapter messageAdapter = new ChatAdapter(this);
+        final ChatAdapter messageAdapter = new ChatAdapter(this,messages);
         list_chat.setAdapter(messageAdapter);
 
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!edit_message.getText().toString().equals("")) {
+                if (!edit_message.getText().toString().equals("")) {
                     messages.add(edit_message.getText().toString());
                     messageAdapter.notifyDataSetChanged();
                     edit_message.setText("");
