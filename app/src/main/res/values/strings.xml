@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">AndroidLabs</string>
+    <string name="text_title">AndroidLabs</string>
     <string name="hello_message">Welcome!</string>
-    <string name="ButtonText">I’m a button</string>
+    <string name="ButtonText">Setting</string>
     <string name="title_activity_login">Sign in</string>
     <string name="text_login">Login</string>
     <string name="text_password">Password</string>
-    <string name="edit_login">Login name</string>
+    <string name="edit_login">E-mail address</string>
     <string name="edit_password">Password</string>
     <string name="radio_button_text">RadioButton</string>
     <string name="checkbox_text">CheckBox</string>

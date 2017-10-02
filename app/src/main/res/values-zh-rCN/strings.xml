@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">安卓实验</string>
+    <string name="text_title">安卓实验</string>
     <string name="hello_message">欢迎！</string>
-    <string name="ButtonText">我是一个按键</string>
+    <string name="ButtonText">设置</string>
     <string name="title_activity_login">登陆</string>
     <string name="text_login">用户名</string>
     <string name="text_password">密码</string>
-    <string name="edit_login">请输入用户名</string>
+    <string name="edit_login">E-mail 地址</string>
     <string name="edit_password">请输入密码</string>
     <string name="radio_button_text">单选按钮</string>
     <string name="checkbox_text">检验栏</string>
