@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class ChatWindow extends Activity {
 
@@ -39,8 +37,6 @@ public class ChatWindow extends Activity {
         messages = new ArrayList<>();
 
         class ChatAdapter extends ArrayAdapter<String> {
-
-            private Date currentDate;
 
             public ChatAdapter(Context context) {
                 super(context, 0);
@@ -74,7 +70,6 @@ public class ChatWindow extends Activity {
                 String currentDateandTime = sdf.format(Calendar.getInstance().getTime());
                 text_date.setText(currentDateandTime);
 
-
                 return result;
             }
         }
@@ -90,7 +85,18 @@ public class ChatWindow extends Activity {
                     messages.add(edit_message.getText().toString());
                     messageAdapter.notifyDataSetChanged();
                     edit_message.setText("");
+                    scrollMyListViewToBottom();
                 }
+            }
+        });
+    }
+
+    private void scrollMyListViewToBottom() {
+        list_chat.post(new Runnable() {
+            @Override
+            public void run() {
+                // Select the last row so it will scroll into view...
+                list_chat.setSelection(list_chat.getCount() - 1);
             }
         });
     }
