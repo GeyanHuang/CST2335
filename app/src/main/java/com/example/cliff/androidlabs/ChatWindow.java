@@ -12,9 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ChatWindow extends Activity {
 
@@ -35,7 +33,6 @@ public class ChatWindow extends Activity {
         messages = new ArrayList<>();
 
         class ChatAdapter extends ArrayAdapter<String> {
-            private String lastDate = null;
 
             public ChatAdapter(Context context, ArrayList<String> messages) {
                 super(context, 0, messages);
