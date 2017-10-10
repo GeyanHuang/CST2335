@@ -53,7 +53,7 @@ public class StartActivity extends Activity {
             @Override
             public boolean onLongClick(View view) {
                 StartActivity.this.deleteDatabase(ChatDatabaseHelper.DATABASE_NAME);
-                Toast.makeText(StartActivity.this,R.string.delete_last_message,Toast.LENGTH_SHORT).show();
+                Toast.makeText(StartActivity.this,R.string.delete_history,Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

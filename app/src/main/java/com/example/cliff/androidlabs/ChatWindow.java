@@ -88,9 +88,12 @@ public class ChatWindow extends Activity {
         button_send.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(messages.size()!=0){
+                    Toast.makeText(ChatWindow.this,R.string.delete_last_message,Toast.LENGTH_SHORT).show();
+                }
+
                 databaseHelper.deleteAll();
                 showHistory();
-                Toast.makeText(ChatWindow.this,R.string.delete_history,Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
