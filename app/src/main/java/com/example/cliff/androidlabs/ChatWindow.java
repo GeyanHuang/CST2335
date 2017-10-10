@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
 
-    ChatDatabaseHelper databaseHelper;
+    private ChatDatabaseHelper databaseHelper;
     private String TAG = ChatWindow.class.getSimpleName();
 
     private Button button_send;

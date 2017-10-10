@@ -16,7 +16,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     private static final String LOGTAG = ChatDatabaseHelper.class.getSimpleName();
 
     public static final String DATABASE_NAME = "Messages.db";
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_NAME = "Messages";
     public static final String COLUMN_ID = "MessageID";
