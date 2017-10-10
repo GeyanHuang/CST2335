@@ -16,7 +16,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     private static final String LOGTAG = ChatDatabaseHelper.class.getSimpleName();
 
     public static final String DATABASE_NAME = "Messages.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_NAME = "Messages";
     public static final String COLUMN_ID = "MessageID";
@@ -24,7 +24,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase database;
 
-    private static final String TABKE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
+    private static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_CONTENT + " TEXT" +
             ")";
@@ -35,15 +35,15 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(TABKE_CREATE);
-        Log.i("ChatDatabaseHelper", "Calling onCreate");
+        Log.i(LOGTAG, "Calling onCreate");
+        sqLiteDatabase.execSQL(TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        Log.i(LOGTAG, "Calling onUpgrade, oldVersion=" + i + " newVersion=" + i1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(sqLiteDatabase);
-        Log.i("ChatDatabaseHelper", "Calling onUpgrade, oldVersion=" + i + " newVersion=" + i1);
+        sqLiteDatabase.execSQL(TABLE_CREATE);
     }
 
     public void openDatabase() {
