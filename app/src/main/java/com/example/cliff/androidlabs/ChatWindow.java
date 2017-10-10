@@ -134,6 +134,10 @@ public class ChatWindow extends Activity {
         databaseHelper.closeDatabase();
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     private void scrollMyListViewToBottom() {
         list_chat.post(new Runnable() {
             @Override
