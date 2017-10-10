@@ -92,7 +92,7 @@ public class ChatWindow extends Activity {
                     Toast.makeText(ChatWindow.this,R.string.delete_last_message,Toast.LENGTH_SHORT).show();
                 }
 
-                databaseHelper.deleteAll();
+                databaseHelper.deleteLastItem();
                 showHistory();
                 return true;
             }

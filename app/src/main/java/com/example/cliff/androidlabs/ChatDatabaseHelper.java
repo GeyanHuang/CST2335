@@ -64,7 +64,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void deleteAll() {
+    public void deleteLastItem() {
         getWritableDatabase().execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = (SELECT MAX(" + COLUMN_ID + ") FROM " + TABLE_NAME + ")");
     }
 
