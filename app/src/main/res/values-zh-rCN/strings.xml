@@ -21,4 +21,5 @@
     <string name="cancel">取消</string>
     <string name="button_chat">开始聊天</string>
     <string name="button_send">发送</string>
+    <string name="delete_history">历史记录已清除</string>
 </resources>

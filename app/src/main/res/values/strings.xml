@@ -20,4 +20,5 @@
     <string name="cancel">Cancel</string>
     <string name="button_chat">Start Chat</string>
     <string name="button_send">SEND</string>
+    <string name="delete_history">History Deleted</string>
 </resources>
