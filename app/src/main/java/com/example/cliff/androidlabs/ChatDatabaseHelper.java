@@ -51,12 +51,12 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void closeDatabase() {
-        if (database != null && database.isOpen()){
+        if (database != null && database.isOpen()) {
             database.close();
         }
     }
 
-    public long insert(String content){
+    public long insert(String content) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_CONTENT, content);
 
@@ -64,11 +64,11 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void deleteAll(){
-        getWritableDatabase().execSQL("delete from "+ TABLE_NAME);
+    public void deleteAll() {
+        getWritableDatabase().execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = (SELECT MAX(" + COLUMN_ID + ") FROM " + TABLE_NAME + ")");
     }
 
-    public Cursor getAllRecords(){
-        return database.query(TABLE_NAME,null,null,null,null,null,null);
+    public Cursor getAllRecords() {
+        return database.query(TABLE_NAME, null, null, null, null, null, null);
     }
 }
