@@ -43,7 +43,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Log.i(LOGTAG, "Calling onUpgrade, oldVersion=" + i + " newVersion=" + i1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        sqLiteDatabase.execSQL(TABLE_CREATE);
+        onCreate(sqLiteDatabase);
     }
 
     public void openDatabase() {
