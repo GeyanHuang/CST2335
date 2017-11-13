@@ -72,7 +72,6 @@ public class ChatWindow extends Activity {
         init();
 
         list_chat.setAdapter(messageAdapter);
-        registerForContextMenu(list_chat);
 
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
