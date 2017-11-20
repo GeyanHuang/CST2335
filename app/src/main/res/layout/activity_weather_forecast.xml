@@ -26,10 +26,11 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="@string/current_temperature"
+            android:text="@string/current_temperature"
             android:textSize="20sp" />
 
         <View
@@ -38,6 +39,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/current_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,14 +64,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="30dp"
-                android:hint="@string/min_temperature"
+                android:text="@string/min_temperature"
                 android:textSize="12sp" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/min_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,18 +87,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:hint="@string/max_temperature"
+                android:text="@string/max_temperature"
                 android:textSize="12sp" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/max_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,10 +118,11 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="Unknown"
+            android:text="Unknown"
             android:textSize="20sp" />
 
         <View
