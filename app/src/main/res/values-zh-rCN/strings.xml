@@ -28,6 +28,4 @@
     <string name="min_temperature">最低温度</string>
     <string name="max_temperature">最高温度</string>
     <string name="weather_icon">天气图标</string>
-    <string name="weather">天气</string>
-    delete_last_message
 </resources>
