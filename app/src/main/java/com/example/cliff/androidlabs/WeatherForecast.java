@@ -56,13 +56,13 @@ public class WeatherForecast extends Activity {
 
     protected static Bitmap getImage(URL url) {
         Log.i(TAG, "In getImage");
-        HttpURLConnection iconConn = null;
+        HttpURLConnection httpURLConnection = null;
         try {
-            iconConn = (HttpURLConnection) url.openConnection();
-            iconConn.connect();
-            int response = iconConn.getResponseCode();
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.connect();
+            int response = httpURLConnection.getResponseCode();
             if (response == 200) {
-                return BitmapFactory.decodeStream(iconConn.getInputStream());
+                return BitmapFactory.decodeStream(httpURLConnection.getInputStream());
             } else {
                 return null;
             }
@@ -70,16 +70,16 @@ public class WeatherForecast extends Activity {
             e.printStackTrace();
             return null;
         } finally {
-            if (iconConn != null) {
-                iconConn.disconnect();
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect();
             }
         }
     }
 
     public boolean fileExistance(String fileName) {
         Log.i(TAG, "In fileExistance");
-        Log.i(TAG, getBaseContext().getFileStreamPath(fileName).toString());
         File file = getBaseContext().getFileStreamPath(fileName);
+        Log.i(TAG, file.toString());
         return file.exists();
     }
 
@@ -92,10 +92,10 @@ public class WeatherForecast extends Activity {
         Bitmap icon;
 
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(String... args) {
             Log.i(TAG, "In doInBackground");
             try {
-                URL url = new URL(params[0]);
+                URL url = new URL(args[0]);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(10000);
                 conn.setConnectTimeout(15000);
