@@ -157,7 +157,6 @@ public class WeatherForecast extends Activity {
         @Override
         protected void onProgressUpdate(Integer... value) {
             Log.i(TAG, "In onProgressUpdate");
-//            progressBar.setVisibility(View.VISIBLE);
             progressBar.setProgress(value[0]);
         }
 
@@ -168,7 +167,6 @@ public class WeatherForecast extends Activity {
             minTemp.setText(min + degree + "C");
             maxTemp.setText(max + degree + "C");
             weatherImage.setImageBitmap(icon);
-//            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 }
