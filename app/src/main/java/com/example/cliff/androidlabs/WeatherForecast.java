@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.Xml;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class WeatherForecast extends Activity {
 
     protected static final String TAG = WeatherForecast.class.getSimpleName();
     private ProgressBar progressBar;
+    private LinearLayout progressLayout;
     private TextView currentTemp, minTemp, maxTemp;
     private ImageView weatherImage;
     private String urlString = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric";
@@ -37,15 +39,16 @@ public class WeatherForecast extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
 
+        progressLayout = findViewById(R.id.progressbar_layout);
+
+        progressLayout.setVisibility(View.VISIBLE);
+
         progressBar = findViewById(R.id.progressbar);
-
-        progressBar.setScaleY(3f);
-        progressBar.setVisibility(View.VISIBLE);
-
         currentTemp = findViewById(R.id.current_temperature);
         minTemp = findViewById(R.id.min_temperature);
         maxTemp = findViewById(R.id.max_temperature);
         weatherImage = findViewById(R.id.weather_image);
+        progressBar.setScaleY(3f);
 
         ForecastQuery forecast = new ForecastQuery();
 
@@ -158,6 +161,7 @@ public class WeatherForecast extends Activity {
         protected void onProgressUpdate(Integer... value) {
             Log.i(TAG, "In onProgressUpdate");
             progressBar.setProgress(value[0]);
+            progressLayout.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -167,6 +171,7 @@ public class WeatherForecast extends Activity {
             minTemp.setText(min + degree + "C");
             maxTemp.setText(max + degree + "C");
             weatherImage.setImageBitmap(icon);
+            progressLayout.setVisibility(View.INVISIBLE);
         }
     }
 }
