@@ -53,7 +53,7 @@ public class StartActivity extends Activity {
             @Override
             public boolean onLongClick(View view) {
                 StartActivity.this.deleteDatabase(ChatDatabaseHelper.DATABASE_NAME);
-                Toast.makeText(StartActivity.this,R.string.delete_history,Toast.LENGTH_SHORT).show();
+                Toast.makeText(StartActivity.this, R.string.delete_history, Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -102,5 +102,10 @@ public class StartActivity extends Activity {
                 Toast.makeText(this, messagePassed, Toast.LENGTH_LONG).show();
                 break;
         }
+    }
+
+    public void weather_forecast(View view) {
+        Intent intent = new Intent(StartActivity.this, WeatherForecast.class);
+        startActivity(intent);
     }
 }
