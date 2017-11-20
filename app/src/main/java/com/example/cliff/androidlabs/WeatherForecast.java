@@ -39,6 +39,7 @@ public class WeatherForecast extends Activity {
 
         progressBar = findViewById(R.id.progressbar);
 
+        progressBar.setScaleY(3f);
         progressBar.setVisibility(View.VISIBLE);
 
         currentTemp = findViewById(R.id.current_temperature);
@@ -113,10 +114,14 @@ public class WeatherForecast extends Activity {
                     if (parser.getName().equals("temperature")) {
                         current = parser.getAttributeValue(null, "value");
                         publishProgress(25);
+                        android.os.SystemClock.sleep(250);
                         min = parser.getAttributeValue(null, "min");
+                        android.os.SystemClock.sleep(250);
                         publishProgress(50);
                         max = parser.getAttributeValue(null, "max");
+                        android.os.SystemClock.sleep(250);
                         publishProgress(75);
+                        android.os.SystemClock.sleep(250);
                     }
                     if (parser.getName().equals("weather")) {
                         iconName = parser.getAttributeValue(null, "icon");
