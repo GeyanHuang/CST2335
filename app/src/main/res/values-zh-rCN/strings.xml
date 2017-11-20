@@ -27,5 +27,4 @@
     <string name="current_temperature">当前温度</string>
     <string name="min_temperature">最低温度</string>
     <string name="max_temperature">最高温度</string>
-    <string name="weather_icon">天气图标</string>
 </resources>

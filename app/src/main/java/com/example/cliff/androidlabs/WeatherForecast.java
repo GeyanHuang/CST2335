@@ -167,9 +167,9 @@ public class WeatherForecast extends Activity {
         @Override
         protected void onPostExecute(String result) {
             String degree = Character.toString((char) 0x00B0);
-            currentTemp.setText(current + degree + "C");
-            minTemp.setText(min + degree + "C");
-            maxTemp.setText(max + degree + "C");
+            currentTemp.setText(current + " " + degree + "C");
+            minTemp.setText(min + " " + degree + "C");
+            maxTemp.setText(max + " " + degree + "C");
             weatherImage.setImageBitmap(icon);
             progressLayout.setVisibility(View.INVISIBLE);
         }
