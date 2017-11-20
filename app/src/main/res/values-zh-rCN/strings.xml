@@ -24,5 +24,8 @@
     <string name="delete_history">历史记录已清除</string>
     <string name="delete_last_message">上一个信息已清除</string>
     <string name="weather_forecast">天气预报</string>
+    <string name="current_temperature">当前温度</string>
+    <string name="min_temperature">最低温度</string>
+    <string name="max_temperature">最高温度</string>
     delete_last_message
 </resources>

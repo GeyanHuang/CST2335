@@ -5,10 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     tools:context="com.example.cliff.androidlabs.WeatherForecast">
 
     <LinearLayout
-        android:id="@+id/activity_dashboard_setdailygoal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bottom_border"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/bottom_border"
@@ -18,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="@string/activity_dashboard_setdailygoal"
+            android:hint="@string/current_temperature"
             android:textSize="20sp" />
 
         <View
@@ -27,7 +38,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/activity_dashboard_dailygoal"
+            android:id="@+id/current_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -54,16 +65,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:hint="@string/activity_dashboard_todayprogress"
+                android:layout_marginRight="30dp"
+                android:hint="@string/min_temperature"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/activity_dashboard_textview_todayexercise"
+                android:id="@+id/min_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="30dp"
                 android:text="0"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -80,11 +91,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:hint="@string/activity_dashboard_dailygoal"
+                android:hint="@string/max_temperature"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/activity_dashboard_textview_dailygoal"
+                android:id="@+id/max_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -92,6 +103,35 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bottom_border"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:hint="Unknown"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:progress="0"
+            android:visibility="invisible"
+            android:textSize="20sp" />
     </LinearLayout>
 
 

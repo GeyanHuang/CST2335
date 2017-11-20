@@ -23,4 +23,7 @@
     <string name="delete_history">History Is Deleted</string>
     <string name="delete_last_message">The Last Message Is Deleted</string>
     <string name="weather_forecast">Weather Forecast</string>
+    <string name="current_temperature">Current Temperature</string>
+    <string name="min_temperature">Min Temperature</string>
+    <string name="max_temperature">Max Temperature</string>
 </resources>
