@@ -144,7 +144,7 @@ public class WeatherForecast extends Activity {
                             outputStream.close();
                             Log.i(TAG, "Adding new image");
                         }
-                        Log.i(TAG, "file name=" + iconFile);
+                        Log.i(TAG, "File name= " + iconFile);
                         publishProgress(100);
                     }
                 }
