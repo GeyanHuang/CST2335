@@ -33,7 +33,7 @@
             app:arrowHeight="10dp"
             app:arrowLocation="right"
             app:arrowWidth="8dp"
-            app:bubbleColor="#bc8f6c" />
+            app:bubbleColor="@color/colorAccent" />
 
         <ImageView
             android:id="@+id/imageView_incoming"

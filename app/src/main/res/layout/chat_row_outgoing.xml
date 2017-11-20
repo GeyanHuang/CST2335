@@ -33,7 +33,7 @@
             app:arrowHeight="10dp"
             app:arrowLocation="left"
             app:arrowWidth="8dp"
-            app:bubbleColor="#836852" />
+            app:bubbleColor="@color/colorAccent" />
     </LinearLayout>
 
 </LinearLayout>
