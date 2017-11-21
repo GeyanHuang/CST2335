@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,7 +44,7 @@ public class ChatWindow extends Activity {
             return messages.get(position);
         }
 
-        public long getItemId(int position){
+        public long getItemId(int position) {
             cursor.moveToPosition(position);
             return cursor.getLong(cursor.getColumnIndex(databaseHelper.COLUMN_ID));
         }
@@ -96,36 +95,28 @@ public class ChatWindow extends Activity {
             }
         });
 
-        button_send.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (messages.size() != 0) {
-                    Toast.makeText(ChatWindow.this, R.string.delete_last_message, Toast.LENGTH_SHORT).show();
-                }
-
-                databaseHelper.deleteLastItem();
-                showHistory();
-                return true;
-            }
-        });
-
-
         list_chat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
+                Long itemId = parent.getItemIdAtPosition(position);
 
                 if (findViewById(R.id.frameLayout) == null) {
-                    Intent intent = new Intent(ChatWindow.this,MessageDetails.class);
-                    intent.putExtra("Message",item);
-                    startActivity(intent);
+                    Intent intent = new Intent(ChatWindow.this, MessageDetails.class);
+                    intent.putExtra("Message", item);
+                    intent.putExtra("ItemId", itemId + "");
+                    startActivityForResult(intent,1);
                 } else {
                     Fragment fragment = new MessageFragment();
                     chatLayout.getLayoutParams().width = 2000;
                     chatLayout.requestLayout();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Message", item);
+                    bundle.putString("ItemId", itemId + "");
+                    fragment.setArguments(bundle);
                     FragmentTransaction fragmentTransaction =
                             getFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frameLayout, fragment);
+                    fragmentTransaction.replace(R.id.frameLayout, fragment);
                     fragmentTransaction.commit();
                 }
             }
@@ -185,5 +176,25 @@ public class ChatWindow extends Activity {
                 list_chat.setSelection(list_chat.getCount() - 1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 1){
+            String id = data.getStringExtra("ItemId");
+            databaseHelper.deleteItem(id);
+        }
+    }
+
+    public void closeSideBar(){
+        chatLayout.getLayoutParams().width= ViewGroup.LayoutParams.MATCH_PARENT;
+        chatLayout.requestLayout();
+    }
+
+    public void deleteMessage(String id){
+        databaseHelper.deleteItem(id);
+        closeSideBar();
+        showHistory();
     }
 }

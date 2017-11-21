@@ -14,6 +14,7 @@ public class MessageDetails extends Activity {
 
         Bundle bundle = new Bundle();
         bundle.putString("Message", getIntent().getStringExtra("Message"));
+        bundle.putString("ItemId", getIntent().getStringExtra("ItemId"));
 
         Fragment fragment = new MessageFragment();
         fragment.setArguments(bundle);
