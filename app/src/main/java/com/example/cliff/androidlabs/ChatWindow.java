@@ -1,13 +1,17 @@
 package com.example.cliff.androidlabs;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,11 +106,25 @@ public class ChatWindow extends Activity {
                 return true;
             }
         });
-        if (findViewById(R.id.frameLayout) == null) {
-            Toast.makeText(this, "It is null", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "It is not null", Toast.LENGTH_SHORT).show();
-        }
+
+
+        list_chat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (findViewById(R.id.frameLayout) == null) {
+                    Intent intent = new Intent(ChatWindow.this,MessageDetails.class);
+                    startActivity(intent);
+                } else {
+                    Fragment fragment = new MessageFragment();
+                    FragmentTransaction fragmentTransaction =
+                            getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frameLayout, fragment);
+                    fragmentTransaction.commit();
+                }
+            }
+        });
+
+
     }
 
     public void init() {
