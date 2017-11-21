@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class ChatWindow extends Activity {
     private ArrayList<String> messages;
     private ChatAdapter messageAdapter;
     private Cursor cursor;
+    private RelativeLayout chatLayout;
 
     class ChatAdapter extends ArrayAdapter<String> {
 
@@ -115,6 +117,7 @@ public class ChatWindow extends Activity {
                     Intent intent = new Intent(ChatWindow.this,MessageDetails.class);
                     startActivity(intent);
                 } else {
+                    chatLayout.getLayoutParams().width = 2000;
                     Fragment fragment = new MessageFragment();
                     FragmentTransaction fragmentTransaction =
                             getFragmentManager().beginTransaction();
@@ -135,6 +138,7 @@ public class ChatWindow extends Activity {
         databaseHelper = new ChatDatabaseHelper(this);
         messages = new ArrayList<>();
         messageAdapter = new ChatAdapter(this);
+        chatLayout = findViewById(R.id.chart_layout);
     }
 
     public void showHistory() {

@@ -4,9 +4,9 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -66,6 +66,7 @@
         <Button
             android:id="@+id/button_delete"
             style="@style/delete_button"
+            android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/delete" />
