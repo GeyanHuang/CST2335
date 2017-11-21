@@ -27,4 +27,7 @@
     <string name="current_temperature">当前温度</string>
     <string name="min_temperature">最低温度</string>
     <string name="max_temperature">最高温度</string>
+    <string name="message">信息</string>
+    <string name="message_id">ID</string>
+    <string name="delete">删除这条信息</string>
 </resources>

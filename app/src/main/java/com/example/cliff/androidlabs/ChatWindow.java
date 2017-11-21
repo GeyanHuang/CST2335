@@ -27,6 +27,7 @@ public class ChatWindow extends Activity {
     private ListView list_chat;
     private ArrayList<String> messages;
     private ChatAdapter messageAdapter;
+    private Cursor cursor;
 
     class ChatAdapter extends ArrayAdapter<String> {
 
@@ -36,6 +37,11 @@ public class ChatWindow extends Activity {
 
         public String getItem(int position) {
             return messages.get(position);
+        }
+
+        public long getItemId(int position){
+            cursor.moveToPosition(position);
+            return cursor.getLong(cursor.getColumnIndex(databaseHelper.COLUMN_ID));
         }
 
         @Override
@@ -87,8 +93,8 @@ public class ChatWindow extends Activity {
         button_send.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(messages.size()!=0){
-                    Toast.makeText(ChatWindow.this,R.string.delete_last_message,Toast.LENGTH_SHORT).show();
+                if (messages.size() != 0) {
+                    Toast.makeText(ChatWindow.this, R.string.delete_last_message, Toast.LENGTH_SHORT).show();
                 }
 
                 databaseHelper.deleteLastItem();
@@ -96,6 +102,11 @@ public class ChatWindow extends Activity {
                 return true;
             }
         });
+        if (findViewById(R.id.frameLayout) == null) {
+            Toast.makeText(this, "It is null", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "It is not null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void init() {
@@ -110,16 +121,16 @@ public class ChatWindow extends Activity {
 
     public void showHistory() {
         messages.clear();
-        Cursor cursor = databaseHelper.getAllRecords();
+        cursor = databaseHelper.getAllRecords();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             messages.add(cursor.getString(cursor.getColumnIndex(databaseHelper.COLUMN_CONTENT)));
-            Log.i(TAG, "SQL MESSAGE:" + cursor.getString( cursor.getColumnIndex( ChatDatabaseHelper.COLUMN_CONTENT) ) );
+            Log.i(TAG, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.COLUMN_CONTENT)));
         }
         messageAdapter.notifyDataSetChanged();
         scrollMyListViewToBottom();
-        Log.i(TAG, "Cursor’s  column count = " + cursor.getColumnCount() );
-        for (int i = 0; i < cursor.getColumnCount(); i++){
-            Log.i(TAG, "Cursor’s  column name = " + (i + 1) + ". " + cursor.getColumnName(i) );
+        Log.i(TAG, "Cursor’s  column count = " + cursor.getColumnCount());
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
+            Log.i(TAG, "Cursor’s  column name = " + (i + 1) + ". " + cursor.getColumnName(i));
         }
     }
 
