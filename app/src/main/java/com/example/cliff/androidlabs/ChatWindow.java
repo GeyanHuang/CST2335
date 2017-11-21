@@ -5,8 +5,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,12 +113,15 @@ public class ChatWindow extends Activity {
         list_chat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+
                 if (findViewById(R.id.frameLayout) == null) {
                     Intent intent = new Intent(ChatWindow.this,MessageDetails.class);
                     startActivity(intent);
                 } else {
-                    chatLayout.getLayoutParams().width = 2000;
                     Fragment fragment = new MessageFragment();
+                    chatLayout.getLayoutParams().width = 2000;
+                    chatLayout.requestLayout();
                     FragmentTransaction fragmentTransaction =
                             getFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.frameLayout, fragment);

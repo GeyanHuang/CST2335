@@ -12,7 +12,11 @@ public class MessageDetails extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_details);
 
+        Bundle bundle = new Bundle();
+        bundle.putString("Message", "abc");
+
         Fragment fragment = new MessageFragment();
+        fragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction =
                 getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.phone_frameLayout, fragment);
