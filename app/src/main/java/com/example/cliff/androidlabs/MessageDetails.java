@@ -13,7 +13,7 @@ public class MessageDetails extends Activity {
         setContentView(R.layout.activity_message_details);
 
         Bundle bundle = new Bundle();
-        bundle.putString("Message", "abc");
+        bundle.putString("Message", getIntent().getStringExtra("Message"));
 
         Fragment fragment = new MessageFragment();
         fragment.setArguments(bundle);

@@ -117,6 +117,7 @@ public class ChatWindow extends Activity {
 
                 if (findViewById(R.id.frameLayout) == null) {
                     Intent intent = new Intent(ChatWindow.this,MessageDetails.class);
+                    intent.putExtra("Message",item);
                     startActivity(intent);
                 } else {
                     Fragment fragment = new MessageFragment();
