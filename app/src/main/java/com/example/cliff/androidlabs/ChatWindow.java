@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -120,8 +121,6 @@ public class ChatWindow extends Activity {
                 }
             }
         });
-
-
     }
 
     public void init() {
@@ -199,5 +198,12 @@ public class ChatWindow extends Activity {
         databaseHelper.deleteItem(id);
         closeSideBar();
         showHistory();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+
     }
 }

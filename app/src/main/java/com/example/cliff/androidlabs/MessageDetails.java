@@ -3,6 +3,7 @@ package com.example.cliff.androidlabs;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class MessageDetails extends Activity {
@@ -22,5 +23,11 @@ public class MessageDetails extends Activity {
                 getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.phone_frameLayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        finish();
     }
 }
