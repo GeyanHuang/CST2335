@@ -1,11 +1,9 @@
 package com.example.cliff.androidlabs;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -107,7 +105,7 @@ public class ChatWindow extends Activity {
                     Intent intent = new Intent(ChatWindow.this, MessageDetails.class);
                     intent.putExtra("Message", item);
                     intent.putExtra("ItemId", itemId + "");
-                    startActivityForResult(intent,1);
+                    startActivityForResult(intent, 1);
                 } else {
                     Fragment fragment = new MessageFragment();
                     Bundle bundle = new Bundle();
@@ -179,22 +177,17 @@ public class ChatWindow extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == 1){
+        if (resultCode == 1) {
             String id = data.getStringExtra("ItemId");
             databaseHelper.deleteItem(id);
         }
     }
 
-    public void closeSideBar(){
-        FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.frameLayout);
-        FragmentTransaction fragmentTransaction =
-                getFragmentManager().beginTransaction();
-        fragmentTransaction.remove(fragment);
-        fragmentTransaction.commit();
+    public void closeSideBar() {
+        getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.frameLayout)).commit();
     }
 
-    public void deleteMessage(String id){
+    public void deleteMessage(String id) {
         databaseHelper.deleteItem(id);
         closeSideBar();
         showHistory();
