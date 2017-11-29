@@ -1,6 +1,7 @@
 package com.example.cliff.androidlabs;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -108,8 +109,6 @@ public class ChatWindow extends Activity {
                     startActivityForResult(intent,1);
                 } else {
                     Fragment fragment = new MessageFragment();
-                    chatLayout.getLayoutParams().width = 2000;
-                    chatLayout.requestLayout();
                     Bundle bundle = new Bundle();
                     bundle.putString("Message", item);
                     bundle.putString("ItemId", itemId + "");
@@ -188,8 +187,12 @@ public class ChatWindow extends Activity {
     }
 
     public void closeSideBar(){
-        chatLayout.getLayoutParams().width= ViewGroup.LayoutParams.MATCH_PARENT;
-        chatLayout.requestLayout();
+        FragmentManager fragmentManager = getFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.frameLayout);
+        FragmentTransaction fragmentTransaction =
+                getFragmentManager().beginTransaction();
+        fragmentTransaction.remove(fragment);
+        fragmentTransaction.commit();
     }
 
     public void deleteMessage(String id){
