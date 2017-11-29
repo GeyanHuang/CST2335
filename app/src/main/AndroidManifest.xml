@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListItemsActivity" />
-        <activity android:name=".ChatWindow" />
+        <activity android:name=".ChatWindow"/>
         <activity android:name=".WeatherForecast" />
         <activity android:name=".MessageDetails" android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
