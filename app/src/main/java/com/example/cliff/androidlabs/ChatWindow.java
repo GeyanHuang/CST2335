@@ -152,6 +152,12 @@ public class ChatWindow extends Activity {
         super.onStart();
         databaseHelper.openDatabase();
         showHistory();
+
+        if (findViewById(R.id.frameLayout) != null) {
+            if(getFragmentManager().findFragmentById(R.id.frameLayout)!=null){
+                    closeSideBar();
+            }
+        }
     }
 
     @Override
