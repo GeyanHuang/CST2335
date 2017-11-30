@@ -79,8 +79,8 @@ public class WeatherForecast extends Activity {
         }
     }
 
-    public boolean fileExistance(String fileName) {
-        Log.i(TAG, "In fileExistance");
+    public boolean fileExistence(String fileName) {
+        Log.i(TAG, "In fileExistence");
         File file = getBaseContext().getFileStreamPath(fileName);
         Log.i(TAG, file.toString());
         return file.exists();
@@ -129,7 +129,7 @@ public class WeatherForecast extends Activity {
                     if (parser.getName().equals("weather")) {
                         iconName = parser.getAttributeValue(null, "icon");
                         String iconFile = iconName + ".png";
-                        if (fileExistance(iconFile)) {
+                        if (fileExistence(iconFile)) {
                             FileInputStream inputStream = null;
                             try {
                                 inputStream = new FileInputStream(getBaseContext().getFileStreamPath(iconFile));
