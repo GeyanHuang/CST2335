@@ -52,6 +52,7 @@
 
         <Button
             style="@style/small_button"
+            android:onClick="Test_Toolbar"
             android:layout_margin="8dp"
             android:text="@string/test_toolbar" />
 
