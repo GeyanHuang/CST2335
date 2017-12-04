@@ -28,9 +28,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListItemsActivity" />
-        <activity android:name=".ChatWindow"/>
+        <activity android:name=".ChatWindow" />
         <activity android:name=".WeatherForecast" />
-        <activity android:name=".MessageDetails" android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity
+            android:name=".MessageDetails"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".TestToolbar"
+            android:label="@string/title_activity_test_toolbar"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
