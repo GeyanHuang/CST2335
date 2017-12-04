@@ -53,8 +53,7 @@
         <Button
             style="@style/small_button"
             android:layout_margin="8dp"
-            android:text="@string/weather_forecast"
-            android:onClick="weather_forecast"/>
+            android:text="@string/weather_forecast" />
 
 
     </LinearLayout>
