@@ -30,4 +30,5 @@
     <string name="message">信息</string>
     <string name="message_id">ID</string>
     <string name="delete">删除</string>
+    <string name="test_toolbar">测试工具</string>
 </resources>
