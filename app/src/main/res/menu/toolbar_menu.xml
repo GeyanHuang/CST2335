@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/action_one"
-        android:icon="@drawable/ic_add_white"
+        android:icon="@drawable/ic_message_white"
         android:orderInCategory="1"
         android:title="One"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_two"
-        android:icon="@drawable/ic_search_white"
+        android:icon="@drawable/ic_add_white"
         android:orderInCategory="2"
         android:title="Two"
         app:showAsAction="always" />
