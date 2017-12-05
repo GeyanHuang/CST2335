@@ -31,4 +31,9 @@
     <string name="message_id">ID</string>
     <string name="delete">删除</string>
     <string name="test_toolbar">测试工具</string>
+    <string name="about">关于</string>
+    <string name="version_info">版本 1.0, 作者 Geyan Huang</string>
+    <string name="item_1">你选择了项目1</string>
+    <string name="item_2">你选择了项目2</string>
+    <string name="item_3">你选择了项目3</string>
 </resources>

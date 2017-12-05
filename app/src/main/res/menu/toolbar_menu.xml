@@ -2,22 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_one"
-        android:title="One"
+    <item
+        android:id="@+id/action_one"
         android:icon="@drawable/ic_add_white"
         android:orderInCategory="1"
+        android:title="One"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_two"
-        android:title="Two"
-        android:icon="@drawable/ic_add_white"
+    <item
+        android:id="@+id/action_two"
+        android:icon="@drawable/ic_search_white"
         android:orderInCategory="2"
+        android:title="Two"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_three"
-        android:title="Three"
-        android:icon="@drawable/ic_add_white"
+    <item
+        android:id="@+id/action_three"
+        android:icon="@drawable/ic_settings_white"
         android:orderInCategory="3"
+        android:title="Three"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_about"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/about"
+        app:showAsAction="never" />
 </menu>
