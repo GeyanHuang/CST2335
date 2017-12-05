@@ -50,7 +50,7 @@ public class TestToolbar extends AppCompatActivity {
             case R.id.action_two:
                 Snackbar.make(this.findViewById(R.id.action_two), R.string.item_2, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                AlertDialog.Builder builder = new AlertDialog.Builder(this.getApplicationContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(TestToolbar.this);
                 builder.setTitle(R.string.dialog_message);
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -62,7 +62,6 @@ public class TestToolbar extends AppCompatActivity {
 
                     }
                 });
-// Create the AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
 
