@@ -36,4 +36,5 @@
     <string name="item_1">你选择了项目1</string>
     <string name="item_2">你选择了项目2</string>
     <string name="item_3">你选择了项目3</string>
+    <string name="custom_dialog_title">新的信息</string>
 </resources>
